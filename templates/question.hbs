@@ -33,13 +33,61 @@
       {{#link-to "new-answer" this class="btn btn-primary"}}Answer{{/link-to}}
       <br>
       <br>
+      <h4>Answers:</h4>
       <ul class="list-unstyled list-group">
-        {{#each answers}}
+        {{#each answer in answers}}
           <li class="list-group-item">
-            {{text}}
-            <span class="pull-right">answered by {{author}}
-              <span class="glyphicon glyphicon-remove text-danger" {{action "deleteAnswer" this}}></span>
+            {{answer.text}}
+
+            {{#if answer.commentsShowing}}
+              <button class="btn btn-info btn-xs" {{action "hideComments" answer}}>hide comments</button>
+            {{else}}
+              <button class="btn btn-info btn-xs" {{action "viewComments" answer}}>view comments</button>
+            {{/if}}
+
+            <span class="pull-right">answered by {{answer.author}}
+              <span class="glyphicon glyphicon-remove text-danger" {{action "deleteAnswer" answer}}></span>
             </span>
+
+            <br>
+            <br>
+
+            {{#if answer.commentsShowing}}
+              <ul class="list-unstyled list-group">
+                {{#each comment in answer.comments}}
+                  <li class="list-group-item">{{comment.text}}
+                    <span class="pull-right">answered by {{comment.author}}
+                    </span>
+                  </li>
+                {{else}}
+                  No comments yet!
+                {{/each}}
+              </ul>
+
+              {{#if answer.addingComment}}
+
+                <form>
+                  <div class="form-group">
+                    <label for="commentText">Comment:</label>
+                    {{input id="commentText" value=commentText class="form-control"}}
+                  </div>
+
+                  <div class="form-group">
+                    <label for="commentAuthor">Author:</label>
+                    {{input id="commentAuthor" value=commentAuthor class="form-control"}}
+                  </div>
+
+                  <button class="btn btn-success btn-xs" {{action "addComment" answer}}>add comment</button>
+                </form>
+
+              {{else}}
+
+                <button class="btn btn-primary btn-xs" {{action "newComment" answer}}>Add a comment</button>
+
+              {{/if}}
+
+
+            {{/if}}
           </li>
         {{/each}}
       </ul>

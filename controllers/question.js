@@ -13,10 +13,41 @@ App.QuestionController = Ember.ObjectController.extend({
       this.transitionToRoute('questions');
     },
     deleteAnswer: function(answer) {
-      question = this.get('model')
+      var question = this.get('model')
       question.get('answers').removeObject(answer);
       question.save();
       answer.destroyRecord();
+    },
+    viewComments: function(answer) {
+    //   var answers = this.get('model.answers');
+    //   for (var i = 0; i < answers.length; i++) {
+    //     var tempAnswer = answers[i];
+    //     if (tempAnswer != answer) {
+    //       tempAnswer.set('commentsShowing', false);
+    //       tempAnswer.save();
+    //     }
+    //   }
+      answer.set('commentsShowing', true);
+    },
+    hideComments: function(answer) {
+      answer.set('commentsShowing', false);
+    },
+    newComment: function(answer) {
+      answer.set('addingComment', true);
+    },
+    addComment: function(answer) {
+      var comment = this.store.createRecord('comment', {
+        text: this.get('commentText'),
+        author: this.get('commentAuthor')
+      });
+      comment.save();
+
+      this.set('commentText', '');
+      this.set('commentAuthor', '');
+
+      answer.get('comments').pushObject(comment);
+      answer.save();
+      answer.set('addingComment', false);
     }
   }
 });
