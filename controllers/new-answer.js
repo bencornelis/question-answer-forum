@@ -4,7 +4,8 @@ App.NewAnswerController = Ember.Controller.extend({
     addAnswer: function() {
       var newAnswer = this.store.createRecord('answer', {
         text: this.get('text'),
-        author: this.get('author')
+        author: this.get('author'),
+        upvotes: 0
       });
       newAnswer.save();
 
@@ -12,7 +13,7 @@ App.NewAnswerController = Ember.Controller.extend({
       question.get('answers').pushObject(newAnswer);
       question.save();
 
-      this.transitionToRoute('question', question.id)
+      this.transitionToRoute('question', question.id);
     }
   }
 });

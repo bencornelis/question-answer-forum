@@ -4,5 +4,6 @@ App.Router.map(function() {
   });
   this.resource('question', {path: 'question/:question_id'}, function() {
     this.resource('new-answer', {path: 'answers/new'});
+    this.resource('answers', {path: 'answers'});
   });
 })
