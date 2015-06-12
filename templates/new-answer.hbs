@@ -1,0 +1,13 @@
+<form>
+  <div class="form-group">
+    <label for="text">Answer:</label>
+    {{input id="text" value=text class="form-control"}}
+  </div>
+
+  <div class="form-group">
+    <label for="author">Author:</label>
+    {{input id="author" value=author class="form-control"}}
+  </div>
+
+  <button class="btn btn-info" {{ action "addAnswer" }}>Post answer</button>
+</form>

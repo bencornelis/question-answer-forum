@@ -11,6 +11,12 @@ App.QuestionController = Ember.ObjectController.extend({
     delete: function() {
       this.get('model').destroyRecord();
       this.transitionToRoute('questions');
+    },
+    deleteAnswer: function(answer) {
+      question = this.get('model')
+      question.get('answers').removeObject(answer);
+      question.save();
+      answer.destroyRecord();
     }
   }
 });

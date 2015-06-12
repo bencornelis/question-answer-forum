@@ -1,31 +1,54 @@
-{{#if isEditing}}
+<div class="row">
+  <div class="col-md-6">
 
-  <form>
-    <div class="form-group">
-      <label for="question">Question:</label>
-      {{input id="question" value=question class="form-control"}}
-    </div>
+    {{#if isEditing}}
 
-    <div class="form-group">
-      <label for="author">Author:</label>
-      {{input id="author" value=author class="form-control"}}
-    </div>
+      <form>
+        <div class="form-group">
+          <label for="question">Question:</label>
+          {{input id="question" value=question class="form-control"}}
+        </div>
 
-    <div class="form-group">
-      <label for="description">Description:</label>
-      {{input id="description" value=description class="form-control"}}
-    </div>
+        <div class="form-group">
+          <label for="author">Author:</label>
+          {{input id="author" value=author class="form-control"}}
+        </div>
 
-    <button class="btn btn-success" {{ action "save" }}>Post changes</button>
-  </form>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          {{input id="description" value=description class="form-control"}}
+        </div>
 
-{{else}}
+        <button class="btn btn-success" {{ action "save" }}>Post changes</button>
+      </form>
 
-  <h2>{{question}}</h2>
-  <h4>Asked by: {{author}}</h4>
-  <h5>Description: {{description}}</h5>
+    {{else}}
 
-  <button class="btn btn-warning" {{action "edit"}}>Edit</button>
-  <button class="btn btn-danger" {{action "delete"}}>Delete</button>
+      <h2>{{question}}</h2>
+      <h4>Asked by: {{author}}</h4>
+      <h5>Description: {{description}}</h5>
 
-{{/if}}
+      <button class="btn btn-warning" {{action "edit"}}>Edit</button>
+      <button class="btn btn-danger" {{action "delete"}}>Delete</button>
+      {{#link-to "new-answer" this class="btn btn-primary"}}Answer{{/link-to}}
+      <br>
+      <br>
+      <ul class="list-unstyled list-group">
+        {{#each answers}}
+          <li class="list-group-item">
+            {{text}}
+            <span class="pull-right">answered by {{author}}
+              <span class="glyphicon glyphicon-remove text-danger" {{action "deleteAnswer" this}}></span>
+            </span>
+          </li>
+        {{/each}}
+      </ul>
+
+    {{/if}}
+
+  </div>
+
+  <div class="col-md-6">
+    {{outlet}}
+  </div>
+</div>

@@ -4,7 +4,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
     <!-- JS LIBRARIES -->
     <script src="libs/jquery-1.11.1.js"></script>
@@ -22,6 +22,7 @@
     <!-- CONTROLLERS SCRIPTS -->
     <script src="controllers/question.js"></script>
     <script src="controllers/new-question.js"></script>
+    <script src="controllers/new-answer.js"></script>
 
     <!-- MODELS SCRIPTS -->
     <script src="models/question.js"></script>
@@ -32,7 +33,9 @@
 
     <!-- HANDLEBAR LOADER -->
     <script>
-      EmberHandlebarsLoader.loadTemplates(['application', 'questions', 'new-question', 'question']);
+      EmberHandlebarsLoader.loadTemplates(
+        ['application', 'questions', 'new-question', 'question', 'new-answer']
+        );
     </script>
 
   </head>
