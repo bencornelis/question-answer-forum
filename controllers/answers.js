@@ -33,8 +33,14 @@ App.AnswersController = Ember.ArrayController.extend({
       answer.get('comments').pushObject(comment);
       answer.set('addingComment', false);
       answer.save();
-
-      this.set('commentText', '');
+    },
+    deleteComment: function(answer, comment) {
+      answer.get('comments').removeObject(comment)
+      comment.destroyRecord();
+    },
+    upvoteComment: function(comment) {
+      comment.incrementProperty('upvotes');
+      comment.save();
     }
   }
 });
