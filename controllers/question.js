@@ -7,6 +7,10 @@ App.QuestionController = Ember.ObjectController.extend({
     save: function() {
       this.set('isEditing', false);
       this.get('model').save();
+    },
+    delete: function() {
+      this.get('model').destroyRecord();
+      this.transitionToRoute('questions');
     }
   }
 });
