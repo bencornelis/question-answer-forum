@@ -1,4 +1,5 @@
 App.QuestionController = Ember.ObjectController.extend({
+  buttonsDisabled: false,
   isEditing: false,
   answersDisplayed: false,
   actions: {
@@ -19,6 +20,9 @@ App.QuestionController = Ember.ObjectController.extend({
     },
     displayAnswers: function() {
       this.set('answersDisplayed', true);
+    },
+    newAnswer: function() {
+      this.set('buttonsDisabled', true);
     }
   }
 });

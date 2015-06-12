@@ -24,15 +24,14 @@
 
     {{else}}
 
-      <h2>{{question}}</h2>
+      <h2>{{question}}  <span class="upvotes badge">{{upvotes}} upvotes</span></h2>
       <h4>Asked by: {{author}}</h4>
       <h5>Description: {{description}}</h5>
-      <h5>{{upvotes}} upvotes</h5>
 
-      <button class="btn btn-warning btn-sm" {{action "edit"}}>Edit</button>
-      <button class="btn btn-danger btn-sm" {{action "delete"}}>Delete</button>
-      {{#link-to "new-answer" this class="btn btn-primary btn-sm"}}Answer{{/link-to}}
-      <button class="btn btn-success btn-sm" {{action "upvote"}}>Upvote</button>
+      <button class="btn btn-warning btn-sm" {{action "edit"}} {{bindAttr disabled="buttonsDisabled"}}>Edit</button>
+      <button class="btn btn-danger btn-sm" {{action "delete"}} {{bindAttr disabled="buttonsDisabled"}}>Delete</button>
+      <span {{action "newAnswer"}}>{{#link-to "new-answer" this class="btn btn-primary btn-sm"}}Answer{{/link-to}}</span>
+      <button class="btn btn-success btn-sm" {{action "upvote"}} {{bindAttr disabled="buttonsDisabled"}}>Upvote</button>
 
       <br>
       <br>

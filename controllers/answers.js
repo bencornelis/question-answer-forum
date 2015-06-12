@@ -24,6 +24,11 @@ App.AnswersController = Ember.ArrayController.extend({
       answer.set('addingComment', true);
     },
     addComment: function(answer, commentText, commentAuthor) {
+
+      if (!commentAuthor) {
+        commentAuthor = 'anonymous';
+      }
+
       var comment = this.store.createRecord('comment', {
         text: commentText,
         author: commentAuthor,
