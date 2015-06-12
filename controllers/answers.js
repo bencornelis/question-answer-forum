@@ -41,6 +41,10 @@ App.AnswersController = Ember.ArrayController.extend({
     upvoteComment: function(comment) {
       comment.incrementProperty('upvotes');
       comment.save();
+    },
+    hideAnswers: function() {
+      this.get('controllers.question').set('answersDisplayed', false);
+      this.transitionToRoute('question');
     }
   }
 });

@@ -4,15 +4,24 @@
       {{#each}}
         <li class="list-group-item">
           {{#link-to "question" id}}{{question}}{{/link-to}}
-          <span class="pull-right badge">{{upvotes}} upvotes</span>
-          <span class="pull-right">asked by {{#link-to "new-question"}}{{author}}{{/link-to}}</span>
+          <span class="upvotes pull-right badge">{{upvotes}} upvotes</span>
+          <span class="pull-right">asked by <span class="text-info">{{author}}</span></span>
         </li>
       {{/each}}
     </ul>
   </div>
   <div class="col-md-6">
-    {{#link-to "new-question" class="btn btn-info"}}Ask a new question{{/link-to}}
 
-    {{outlet}}
+    {{#if addingQuestion}}
+
+      {{outlet}}
+
+    {{else}}
+
+      <span {{action "newQuestion"}}>
+        {{#link-to "new-question" class="btn btn-info"}}Ask a new question{{/link-to}}
+      </span>
+
+    {{/if}}
   </div>
 </div>

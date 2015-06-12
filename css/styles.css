@@ -1,3 +1,16 @@
 [data-ember-action] {
   cursor: pointer;
 }
+
+.upvotes {
+  margin-left:5px;
+  margin-right:5px;
+}
+
+.clickable:hover {
+  text-decoration: underline;
+}
+
+.clickable {
+  color: #337ab7;
+}

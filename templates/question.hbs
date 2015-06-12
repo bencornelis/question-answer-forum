@@ -19,7 +19,7 @@
           {{input id="description" value=description class="form-control"}}
         </div>
 
-        <button class="btn btn-success" {{ action "save" }}>Post changes</button>
+        <button class="btn btn-success" {{action "save"}}>Post changes</button>
       </form>
 
     {{else}}
@@ -36,9 +36,16 @@
 
       <br>
       <br>
-      {{#link-to "answers" id }} Display answers{{/link-to}}
 
-      {{outlet "answers"}}
+      {{#if answersDisplayed}}
+
+        {{outlet "answers"}}
+
+      {{else}}
+
+        <span {{action "displayAnswers"}}> {{#link-to "answers" id}} Display answers {{/link-to}} </span>
+
+      {{/if}}
 
     {{/if}}
 

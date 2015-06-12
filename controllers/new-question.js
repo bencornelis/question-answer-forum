@@ -1,4 +1,5 @@
 App.NewQuestionController = Ember.Controller.extend({
+  needs: ['questions'],
   actions: {
     addQuestion: function() {
       var newQuestion = this.store.createRecord('question', {
@@ -12,6 +13,8 @@ App.NewQuestionController = Ember.Controller.extend({
       this.set('question', '');
       this.set('author', '');
       this.set('description', '');
+
+      this.get('controllers.questions').set('addingQuestion', false);
 
       this.transitionToRoute('questions');
     }

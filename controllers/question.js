@@ -1,5 +1,6 @@
 App.QuestionController = Ember.ObjectController.extend({
   isEditing: false,
+  answersDisplayed: false,
   actions: {
     edit: function() {
       this.set('isEditing', true);
@@ -16,5 +17,8 @@ App.QuestionController = Ember.ObjectController.extend({
       this.get('model').destroyRecord();
       this.transitionToRoute('questions');
     },
+    displayAnswers: function() {
+      this.set('answersDisplayed', true);
+    }
   }
 });
