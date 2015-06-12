@@ -36,13 +36,11 @@
       <br>
       <br>
 
+      <span {{action "displayAnswers"}}> {{#link-to "answers" id}} Display answers {{/link-to}} </span>
+      <hr>
       {{#if answersDisplayed}}
 
         {{outlet "answers"}}
-
-      {{else}}
-
-        <span {{action "displayAnswers"}}> {{#link-to "answers" id}} Display answers {{/link-to}} </span>
 
       {{/if}}
 

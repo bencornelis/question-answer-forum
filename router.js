@@ -6,4 +6,5 @@ App.Router.map(function() {
     this.resource('new-answer', {path: 'answers/new'});
     this.resource('answers', {path: 'answers'});
   });
+  this.resource('all-answers', {path: '/answers'});
 })

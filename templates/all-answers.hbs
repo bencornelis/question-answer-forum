@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-6">
+    <ul class="list-unstyled list-group">
+      {{#each}}
+        {{#if text}}
+          <li class="list-group-item">
+            <span class="text-primary">{{text}}</span>
+            <span class="text-success"> in reponse to </span> <span class="text-warning">{{question.question}}</span>
+            <span class="upvotes pull-right badge">{{upvotes}} upvotes</span>
+            <span class="pull-right">answered by <span class="text-info">{{author}}</span></span>
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>

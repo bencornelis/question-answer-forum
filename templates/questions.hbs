@@ -2,11 +2,13 @@
   <div class="col-md-6">
     <ul class="list-unstyled list-group">
       {{#each}}
-        <li class="list-group-item">
-          {{#link-to "question" id}}{{question}}{{/link-to}}
-          <span class="upvotes pull-right badge">{{upvotes}} upvotes</span>
-          <span class="pull-right">asked by <span class="text-info">{{author}}</span></span>
-        </li>
+        {{#if question}}
+          <li class="list-group-item">
+            {{#link-to "question" id}}{{question}}{{/link-to}}
+            <span class="upvotes pull-right badge">{{upvotes}} upvotes</span>
+            <span class="pull-right">asked by <span class="text-info">{{author}}</span></span>
+          </li>
+        {{/if}}
       {{/each}}
     </ul>
   </div>
