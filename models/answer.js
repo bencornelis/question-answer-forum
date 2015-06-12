@@ -3,5 +3,6 @@ App.Answer = DS.Model.extend({
   author: DS.attr(),
   question: DS.belongsTo('question', {async: true}),
   comments: DS.hasMany('comment', {async: true}),
-  commentsShowing: DS.attr()
+  commentsShowing: DS.attr(),
+  upvotes: DS.attr()
 })

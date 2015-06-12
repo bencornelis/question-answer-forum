@@ -4,6 +4,7 @@
       {{#each}}
         <li class="list-group-item">
           {{#link-to "question" id}}{{question}}{{/link-to}}
+          <span class="pull-right badge">{{upvotes}} upvotes</span>
           <span class="pull-right">asked by {{#link-to "new-question"}}{{author}}{{/link-to}}</span>
         </li>
       {{/each}}

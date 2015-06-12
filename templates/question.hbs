@@ -27,15 +27,18 @@
       <h2>{{question}}</h2>
       <h4>Asked by: {{author}}</h4>
       <h5>Description: {{description}}</h5>
+      <h5>{{upvotes}} upvotes</h5>
 
-      <button class="btn btn-warning" {{action "edit"}}>Edit</button>
-      <button class="btn btn-danger" {{action "delete"}}>Delete</button>
-      {{#link-to "new-answer" this class="btn btn-primary"}}Answer{{/link-to}}
+      <button class="btn btn-warning btn-sm" {{action "edit"}}>Edit</button>
+      <button class="btn btn-danger btn-sm" {{action "delete"}}>Delete</button>
+      {{#link-to "new-answer" this class="btn btn-primary btn-sm"}}Answer{{/link-to}}
+      <button class="btn btn-success btn-sm" {{action "upvote"}}>Upvote</button>
+
       <br>
       <br>
-      <h4>Answers:</h4>
       <ul class="list-unstyled list-group">
         {{#each answer in answers}}
+        <h4>Answers:</h4>
           <li class="list-group-item">
             {{answer.text}}
 
@@ -56,7 +59,7 @@
               <ul class="list-unstyled list-group">
                 {{#each comment in answer.comments}}
                   <li class="list-group-item">{{comment.text}}
-                    <span class="pull-right">answered by {{comment.author}}
+                    <span class="pull-right">commented by {{comment.author}}
                     </span>
                   </li>
                 {{else}}
@@ -69,7 +72,7 @@
                 <form>
                   <div class="form-group">
                     <label for="commentText">Comment:</label>
-                    {{input id="commentText" value=commentText class="form-control"}}
+                    {{textarea id="commentText" value=commentText class="form-control" rows="3"}}
                   </div>
 
                   <div class="form-group">
@@ -89,6 +92,9 @@
 
             {{/if}}
           </li>
+
+        {{else}}
+          No answers yet!
         {{/each}}
       </ul>
 

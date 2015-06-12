@@ -8,6 +8,12 @@ App.QuestionController = Ember.ObjectController.extend({
       this.set('isEditing', false);
       this.get('model').save();
     },
+    upvote: function() {
+      var question = this.get('model');
+      var newUpvoteCount = question.get('upvotes') + 1;
+      question.set('upvotes', newUpvoteCount);
+      question.save();
+    },
     delete: function() {
       this.get('model').destroyRecord();
       this.transitionToRoute('questions');
@@ -19,14 +25,6 @@ App.QuestionController = Ember.ObjectController.extend({
       answer.destroyRecord();
     },
     viewComments: function(answer) {
-    //   var answers = this.get('model.answers');
-    //   for (var i = 0; i < answers.length; i++) {
-    //     var tempAnswer = answers[i];
-    //     if (tempAnswer != answer) {
-    //       tempAnswer.set('commentsShowing', false);
-    //       tempAnswer.save();
-    //     }
-    //   }
       answer.set('commentsShowing', true);
     },
     hideComments: function(answer) {
