@@ -4,11 +4,7 @@ App.AnswersController = Ember.ArrayController.extend({
   sortAscending: false,
   actions: {
     deleteAnswer: function(answer) {
-      var answers = this.get('model');
-      answers.removeObject(answer);
-      var question = this.get('controllers.question.model');
-      question.get('answers').removeObject(answer);
-      question.save();
+      answer.destroyRecord();
     },
     upvoteAnswer: function(answer) {
       answer.incrementProperty('upvotes');
@@ -40,7 +36,7 @@ App.AnswersController = Ember.ArrayController.extend({
       answer.save();
     },
     deleteComment: function(answer, comment) {
-      answer.get('comments').removeObject(comment)
+      // answer.get('comments').removeObject(comment)
       comment.destroyRecord();
     },
     upvoteComment: function(comment) {
